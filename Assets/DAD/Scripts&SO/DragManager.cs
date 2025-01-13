@@ -5,6 +5,8 @@ namespace DAD
 {
     public class DragManager : MonoBehaviour
     {
+        public bool HasSelectedItem => _currentRigidbody != null;
+
         private Rigidbody2D _currentRigidbody;
         private Camera _camera;
         private Vector3 _offset;

@@ -15,7 +15,8 @@ namespace DAD
 
         void LateUpdate()
         {
-            if (Input.GetMouseButton(0))
+            if (Input.GetMouseButton(0)
+                && !GameLogic.Instance.dragManager.HasSelectedItem)
             {
                 MoveCameraByMouseAxis();
             }

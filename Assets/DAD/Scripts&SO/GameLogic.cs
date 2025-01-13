@@ -18,8 +18,8 @@ namespace DAD
 
             Instance = this;
 
-            dragManager = this.gameObject.AddComponent<DragManager>();
-            cameraMover = this.gameObject.AddComponent<CameraMover>();
+            dragManager = GetComponentInChildren<DragManager>();
+            cameraMover = GetComponentInChildren<CameraMover>();
 
         }
     }
