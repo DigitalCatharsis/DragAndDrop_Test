@@ -480,8 +480,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e88a3c6605641c44f8cf20a5a4d65d64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moveSpeedPointer: 10
+  _moveSpeedPointer: 100
   _moveSpeedTouch: 0.1
+  _minCameraX: -15.06
+  _maxCameraX: 14.89
 --- !u!1 &195179598
 GameObject:
   m_ObjectHideFlags: 0
@@ -1717,6 +1719,7 @@ Transform:
   m_Children:
   - {fileID: 4474177}
   - {fileID: 163396578}
+  - {fileID: 1067073896}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &321349276
@@ -1733,6 +1736,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dragManager: {fileID: 0}
   cameraMover: {fileID: 0}
+  cameraSizer: {fileID: 0}
 --- !u!1 &363519136
 GameObject:
   m_ObjectHideFlags: 0
@@ -3625,6 +3629,50 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1067073895
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1067073896}
+  - component: {fileID: 1067073897}
+  m_Layer: 0
+  m_Name: CameraSizer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1067073896
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1067073895}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 321349275}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1067073897
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1067073895}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80127362a9aeeec44b756de1cd876dc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1111232587
 GameObject:
   m_ObjectHideFlags: 0
@@ -4540,6 +4588,29 @@ PolygonCollider2D:
       - {x: -27.214903, y: 5.1134987}
       - {x: -35.523594, y: 4.998489}
       - {x: -40.793472, y: -4.0841722}
+      - {x: -20.57507, y: -3.8514886}
+      - {x: -20.427187, y: -0.19690117}
+      - {x: -22.50323, y: -0.25483304}
+      - {x: -22.863401, y: 1.9959384}
+      - {x: -20.737005, y: 1.2382327}
+      - {x: -17.901028, y: 1.0194869}
+      - {x: -17.904434, y: 0.47533956}
+      - {x: -17.893356, y: 0.10433559}
+      - {x: -17.900696, y: -0.1543535}
+      - {x: -20.266197, y: -0.20309246}
+      - {x: -20.41945, y: -0.25593853}
+      - {x: -20.546202, y: -3.9568741}
+      - {x: 2.867793, y: -3.8600664}
+      - {x: -13.032008, y: -0.20364484}
+      - {x: -15.195385, y: -0.35039508}
+      - {x: -16.380594, y: -0.21344453}
+      - {x: -17.642847, y: -0.19232734}
+      - {x: -17.86581, y: -0.17531738}
+      - {x: -17.887655, y: 0.44204247}
+      - {x: -17.885735, y: 1.0075248}
+      - {x: -15.23191, y: 1.2068425}
+      - {x: -13.08316, y: 2.1853952}
+      - {x: -13.021376, y: -0.14677066}
       - {x: 3.1274083, y: -3.8970897}
       - {x: 3.8151865, y: 5.0962515}
   m_UseDelaunayMesh: 0

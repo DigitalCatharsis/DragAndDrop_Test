@@ -7,6 +7,10 @@ namespace DAD
         [SerializeField] private float _moveSpeedPointer = 10f;       // Скорость перемещения камеры
         [SerializeField] private float _moveSpeedTouch = 1f;       // Скорость перемещения камеры
 
+        [SerializeField] private float _minCameraX = -14.25f;       // Скорость перемещения камеры
+        [SerializeField] private float _maxCameraX = 14.0763f;       // Скорость перемещения камеры
+
+
         private Camera mainCamera;
 
         void Start()
@@ -17,6 +21,7 @@ namespace DAD
         void LateUpdate()
         {
 #if UNITY_EDITOR
+            //does not work with uniy remote lol
             if (Input.GetMouseButton(0)
                 && !GameLogic.Instance.dragManager.HasSelectedItem)
             {
@@ -36,13 +41,29 @@ namespace DAD
 
         void MoveCameraByMouseAxis()
         {
-            float mouseMovement = Input.GetAxis("Mouse X");
-            Vector3 cameraMovement = Vector3.right * -mouseMovement * _moveSpeedPointer * Time.fixedDeltaTime;
+            var mouseMovement = Input.GetAxis("Mouse X");
+            var cameraMovement = Vector3.right * -mouseMovement * _moveSpeedPointer * Time.fixedDeltaTime;
+
+            cameraMovement = CheckAndSetXPosition(cameraMovement);
+
             mainCamera.transform.Translate(cameraMovement, Space.World);
         }
+
+        private Vector3 CheckAndSetXPosition(Vector3 cameraMovement)
+        {
+            var currentPosition = mainCamera.transform.position;            
+            var newPosition = currentPosition + cameraMovement;
+
+            newPosition.x = Mathf.Clamp(newPosition.x, _minCameraX, _maxCameraX);
+                        
+            return newPosition - currentPosition;
+        }
+
         void MoveCameraByTouch(Vector2 deltaPosition)
         {
-            Vector3 cameraMovement = new Vector3(-deltaPosition.x, 0, 0) * _moveSpeedTouch * Time.fixedDeltaTime;
+            var cameraMovement = new Vector3(-deltaPosition.x, 0, 0) * _moveSpeedTouch * Time.fixedDeltaTime;
+            cameraMovement = CheckAndSetXPosition(cameraMovement);
+
             mainCamera.transform.Translate(cameraMovement, Space.World);
         }
     }

@@ -7,6 +7,7 @@ namespace DAD
         public static GameLogic Instance { get; private set; }
         public DragManager dragManager;
         public CameraMover cameraMover;
+        public CameraSizer cameraSizer;
 
         private void OnEnable()
         {
@@ -20,6 +21,7 @@ namespace DAD
 
             dragManager = GetComponentInChildren<DragManager>();
             cameraMover = GetComponentInChildren<CameraMover>();
+            cameraSizer = GetComponentInChildren<CameraSizer>();
 
         }
     }
