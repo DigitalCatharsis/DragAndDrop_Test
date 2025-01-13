@@ -62,8 +62,10 @@
   <ItemGroup>
     <Compile Include="Assets\DAD\Scripts&amp;SO\SpriteColorChanger.cs" />
     <Compile Include="Assets\DAD\Scripts&amp;SO\MenuButtonController.cs" />
-    <Compile Include="Assets\DAD\Scripts&amp;SO\DragAndDrop.cs" />
+    <Compile Include="Assets\DAD\Scripts&amp;SO\CameraMover.cs" />
     <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
+    <Compile Include="Assets\DAD\Scripts&amp;SO\GameLogic.cs" />
+    <Compile Include="Assets\DAD\Scripts&amp;SO\DragManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
