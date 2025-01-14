@@ -1,3 +1,4 @@
+using System;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 
@@ -7,9 +8,31 @@ namespace DAD
     {
         public bool HasSelectedItem => _currentRigidbody != null;
 
+        private AppleReciver _appleReceiver;
         private Rigidbody2D _currentRigidbody;
         private Camera _camera;
         private Vector3 _offset;
+
+        private bool _forceStopDrag = false;
+
+        void OnEnable()
+        {
+            // Инициализация переменной appleReceiver
+            _appleReceiver = FindObjectOfType<AppleReciver>();
+            _appleReceiver.OnAppleDetected += OnAppleReceivedHandler;
+            //_appleReceiver.OnAllApplesPlaced += OnAllApplesReceivedHandler;
+        }
+
+        private void OnAppleReceivedHandler()
+        {
+            _forceStopDrag = true;
+        }
+
+        void OnDisable()
+        {
+            _appleReceiver.OnAppleDetected -= OnAppleReceivedHandler;
+            //_appleReceiver.OnAllApplesPlaced -= OnAllApplesReceivedHandler;
+        }
 
         private void Start()
         {
@@ -44,7 +67,10 @@ namespace DAD
                 }
             }
 
-            DragObject();
+            if (!_forceStopDrag)
+            {
+                DragObject();
+            }
         }
 
         private void SelectObject()
@@ -74,6 +100,8 @@ namespace DAD
 
         private void DropObject()
         {
+            _forceStopDrag = false;
+
             if (_currentRigidbody == null)
             {
                 return;
@@ -91,7 +119,7 @@ namespace DAD
             var bottomCenter = new Vector2(collider.bounds.center.x, collider.bounds.min.y);
 
             // Пускаем луч вперед от нижней точки коллайдера
-            var hit = Physics2D.Raycast(bottomCenter,  Camera.main.transform.forward, 0.1f, LayerMask.GetMask("Surfaces"));
+            var hit = Physics2D.Raycast(bottomCenter, Camera.main.transform.forward, 0.1f, LayerMask.GetMask("Surfaces"));
 
             if (hit)
             {
