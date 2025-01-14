@@ -6,7 +6,7 @@ namespace DAD
     {
         private const float _targetSizeX = 1280.0f;
         private const float _targetSizeY = 720.0f;
-        private const float halfSize = 200.0f; // 1/2 of height in pixels
+        private const float _halfSize = 200.0f; // 1/2 of height in pixels
 
         private void Awake()
         {
@@ -33,7 +33,7 @@ namespace DAD
 
         private void Resize(float sizeDifference = 1.0f)
         {
-            Camera.main.orthographicSize = _targetSizeY / halfSize * sizeDifference;
+            Camera.main.orthographicSize = _targetSizeY / _halfSize * sizeDifference;
         }
     }
 }
